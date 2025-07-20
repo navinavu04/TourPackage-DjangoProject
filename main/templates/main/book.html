@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Package</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+
+</head>
+<body>
+    <h1>Booking: {{ package.title }}</h1>
+    <p><strong>Price:</strong> ₹{{ package.price }}</p>
+    <p><strong>Description:</strong> {{ package.description }}</p>
+    <p><em>(Booking form can be added here later.)</em></p>
+
+    <h2>Booking Form</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Confirm Booking</button>
+    </form>
+
+    <br>
+    <a href="{% url 'home' %}">← Back to Packages</a>
+
+</body>
+</html>
