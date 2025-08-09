@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Tour Packages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .hero {
+            background-image: url("{% static 'images/bjimage.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .welcome-box {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .welcome-box h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .welcome-box p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .btn-login {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 22px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="welcome-box">
+        <h1>Welcome to Our Tour Package System</h1>
+        <p>Find the best travel experiences here!</p>
+        <a href="{% url 'login' %}" class="btn-login">Login to Continue</a>
+    </div>
+</div>
+
+</body>
+</html>
