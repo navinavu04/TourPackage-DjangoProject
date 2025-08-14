@@ -67,7 +67,8 @@ def book_package(request, package_id):
 
 def user_logout(request):
     logout(request)
-    return redirect('login')  
+    return redirect('index')  
+
 
 def vendor_register(request):
     if request.method == 'POST':
@@ -78,11 +79,21 @@ def vendor_register(request):
             company_name = form.cleaned_data['company_name']
             contact = form.cleaned_data['contact']
 
+            
+            if User.objects.filter(username=username).exists():
+                return render(request, 'main/vendor_register.html', {
+                    'form': form,
+                    'error': 'Username already exists. Please choose a different one.'
+                })
+
+            
             user = User.objects.create_user(username=username, password=password)
-            vendor = Vendor.objects.create(user=user, company_name=company_name,contact=contact)
+            vendor = Vendor.objects.create(user=user, company_name=company_name, contact=contact)
+
             return render(request, 'main/vendor_register_success.html', {'vendor': vendor})
     else:
         form = VendorRegistrationForm()
+
     return render(request, 'main/vendor_register.html', {'form': form})
 
 def vendor_login(request):
@@ -106,7 +117,7 @@ def vendor_login(request):
 
 def vendor_dashboard(request):
     vendor = Vendor.objects.get(user=request.user)
-    packages = TourPackage.objects.filter(vendor=vendor)
+    packages = TourPackage.objects.filter(vendor=request.user.vendor)
     return render(request, 'main/vendor_dashboard.html', {'packages': packages})
 
 def add_package_vendor(request):
@@ -140,3 +151,9 @@ def delete_package_vendor(request, package_id):
     package.delete()
     return redirect('vendor_dashboard')
 
+def vendor_logout(request):
+    logout(request)
+    return redirect('index') 
+
+def choose_login(request):
+    return render(request,'main/choose_login.html')

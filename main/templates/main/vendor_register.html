@@ -5,10 +5,10 @@
 </head>
 <body>
     <h2>Vendor Registration</h2>
-    <form method="POST"
+    <form method="POST">
         {% csrf_token %}
-        {{ forms.as_p }}
+        {{ form.as_p }}
         <button type="submit">Registration</button>
-    </forms>
+    </form>
 </body>
 </html>

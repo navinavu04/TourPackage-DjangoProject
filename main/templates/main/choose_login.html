@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose Login</title>
+    {% load static %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url("{% static 'main/travel-bg.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+        }
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            width: 350px;
+            text-align: center;
+            margin: 120px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            margin-bottom: 25px;
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            margin: 8px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            color: white;
+        }
+        .btn-blue { background-color: #007bff; }
+        .btn-green { background-color: #28a745; }
+        .btn-yellow { background-color: #ffc107; color: black; }
+        .btn-red { background-color: #dc3545; }
+        .btn:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay">
+        <h2>Select an Option</h2>
+        <a href="{% url 'login' %}" class="btn btn-blue">User Login</a>
+        <a href="{% url 'register' %}" class="btn btn-green">User Register</a>
+        <a href="{% url 'vendor_login' %}" class="btn btn-yellow">Vendor Login</a>
+        <a href="{% url 'vendor_register' %}" class="btn btn-red">Vendor Register</a>
+    </div>
+
+</body>
+</html>

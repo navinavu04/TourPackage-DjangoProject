@@ -1,4 +1,3 @@
-{% extends 'main/base.html' %}
 {% block content %}
   <h2>Welcome, {{ request.user.username }}</h2>
   <a href="{% url 'vendor_add_package' %}">+ Add New Package</a>
@@ -9,7 +8,7 @@
       {% for package in packages %}
         <li>
           <strong>{{ package.title }}</strong> - ₹{{ package.price }}
-          <a href="{% url 'edit_package' package.id %}">Edit</a> |
+          <a href="{% url 'edit_package_vendor' package.id %}">Edit</a> |
           <a href="{% url 'delete_package' package.id %}">Delete</a>
         </li>
       {% endfor %}

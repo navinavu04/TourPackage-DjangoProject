@@ -4,7 +4,7 @@ from .models import Vendor, TourPackage,Booking
 class TourPackageAdmin(admin.ModelAdmin):
     list_display = ('title', 'price','vendor','is_approved')
     list_filter = ('is_approved','vendor')
-    search_fields = ('title','vendor_company_name')
+    search_fields = ['title','vendor__company_name']
     actions = ['approve_packages']
 
 def approve_packages(self, request, queryset):

@@ -32,7 +32,7 @@ class VendorRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = Vendor
-        fields = ['company_name','username','password']
+        fields = ['company_name','contact','username','password']
 
 
 
